@@ -11,20 +11,26 @@ interface PageProps {
   };
 }
 
-export type SearchYF = {
-  exchange?: string,
-  shortname?: string,
-  quoteType?: string,
-  symbol?: string,
-  index: string,
-  score?: string,
-  typeDisp?: string,
-  longname?: string,
-  isYahooFinance: true,
+export type quoteYF = {
+  exchange?: string;
+  shortname?: string;
+  quoteType?: string;
+  symbol?: string;
+  index: string;
+  score?: number;
+  typeDisp?: string;
+  longname?: string;
+  isYahooFinance: true;
   // index: '5167b830a941ed08d275f74473d13e91',
-  name?: string,
-  permalink?: string,
-}
+  name?: string;
+  permalink?: string;
+  dispSecIndFlag?: boolean;
+  exchDisp?: string;
+  industry?: string;
+  industryDisp?: string;
+  sector?: string;
+  sectorDisp?: string;
+};
 
 const Page = async ({ searchParams }: PageProps) => {
   const query = searchParams.query;
@@ -40,11 +46,11 @@ const Page = async ({ searchParams }: PageProps) => {
     queryFn: async () => await getSearchDetails(query),
   });
 
-    return (
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <SearchItems query={query}/>
-      </HydrationBoundary>
-    );
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <SearchItems query={query} />
+    </HydrationBoundary>
+  );
 };
 
 export default Page;

@@ -19,8 +19,8 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className='relative w-full h-14 flex flex-col bg-white'>
-      <div className='relative h-14 z-10 rounded-md'>
+    <div className='relative w-[30%] h-14 flex flex-col rounded-md'>
+      <div className='relative h-14 z-10'>
         <Input
           disabled={isSearching}
           value={query}
@@ -35,7 +35,8 @@ export const SearchBar = () => {
             }
           }}
           ref={inputRef}
-          className='absolute inset-0 h-full'
+          className='absolute inset-0 h-full text-lg placeholder-lg'
+          placeholder='Search Market data'
         />
         <Button
           disabled={isSearching}
